@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %> from <%= pid %></p>
-  </body>
+<head>
+    <title>Cluster</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="/javascripts/app.js"></script>
+</head>
+<body ng-app="clusterApp" ng-controller="MainCtrl">
+    <div class="container">
+        <h1>Process IDs</h1>
+
+        <form class="form-actions" ng-submit="getMyPIDs()">
+            <button class="btn btn-primary" type="submit">Get PIDS</button>
+        </form>
+
+        <ul class="list-group">
+            <div ng-repeat="node in cluster">
+                <li class="list-group-item">{{node.pid}}</li>
+            </div>
+        </ul>
+    </div>
+</body>
 </html>
